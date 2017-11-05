@@ -1,0 +1,29 @@
+.onAttach <- function(libname, pkgname) {
+  packageStartupMessage("hello, my R world")
+}
+
+#' @importFrom("stats", "filter") 
+#' @export
+checkHeight3 <- function(students.input = students, sex.specific = TRUE){
+  #define result.frame
+  result.frame = data.frame(matrix(NA, nrow = nrow(students.input), ncol = 2))
+  colnames(result.frame) = c("name", "difference")
+  #mean height of man
+  male.mean = mean(students.input, 'M')
+  #mean height of female
+  female.mean = mean(students.input, 'F')
+
+  # use apply Function
+  l = apply(students.input,1,function(r){
+    if (r['sex'] == "F") {
+      height.diff = 100*(as.numeric(r['height']) - female.mean$mean)
+    }
+    else {
+      height.diff = 100*(as.numeric(r['height']) - male.mean$mean)
+    }
+  }
+  )
+  result.frame[, "name"]=students.input[,"name"]
+  result.frame[, "difference"]=l
+  return(result.frame)
+}

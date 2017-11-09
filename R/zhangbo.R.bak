@@ -2,7 +2,7 @@
   packageStartupMessage("hello, my R world")
 }
 
-#' @importFrom("stats", "filter") 
+#' @importFrom stats filter
 #' @export
 checkHeight3 <- function(students.input = students, sex.specific = TRUE){
   #define result.frame

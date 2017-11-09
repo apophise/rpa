@@ -1,14 +1,7 @@
 
 
-mean <- function(students.input, sex) {
-  if ('M' == sex) {
-    male.mean = students.input %>%
-      filter(sex == "M") %>%
-      summarise(mean = mean(height))
-  } else {
-    #mean height of female
-    female.mean = students.input %>%
-      filter(sex == "F") %>%
-      summarise(mean = mean(height))
-  }
+mymean <- function(v) {
+  m <- round(sum(v)/length(v), digits = 3)
+  print("this is my mean")
+  return(m)
 }
